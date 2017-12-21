@@ -1,0 +1,19 @@
+{
+  "name": "water-utility",
+  "version": "1.0.0",
+  "description": "A nifty tool to make data collection and analysis easier",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/prestaylor51/waterUtility.git"
+  },
+  "author": "Preston Taylor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/prestaylor51/waterUtility/issues"
+  },
+  "homepage": "https://github.com/prestaylor51/waterUtility#readme"
+}
