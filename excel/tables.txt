@@ -1,0 +1,31 @@
+
+pump_model
+	primary key
+	manufacturer
+	model
+	motor_hp
+	voltage
+	rpm
+	pwr_factor
+	efficiency
+	column_length
+	column_size
+	shaft_tube_size
+	line_shaft_hp_loss
+	column_pipe_c_factor
+	stages
+	specific_cap
+
+
+pump_description
+	id			 primary key
+	model_id	 int			foreign key pump_model(id)
+	suction_type int 			ref suction(id)
+	MGD 		 INTEGER
+	GPM 		 INTEGER
+	THD 		 INTEGER
+	elevation 	 INTEGER
+	zone		 VARCHAR(30)
+	static_lvl	 INTEGER
+
+
