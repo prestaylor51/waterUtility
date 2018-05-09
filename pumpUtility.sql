@@ -2,7 +2,7 @@
 
 
 -- DROP all tables and data 
-DROP TABLE pump_model, pump_description, suction CASCADE;
+DROP TABLE pump_model, pump_station, suction CASCADE;
 
 -- PUMP_MODEL --
 CREATE TABLE pump_model(
@@ -24,8 +24,10 @@ id 					SERIAL			PRIMARY KEY
 
 -- END PUMP_MODEL --
 
--- PUMP DESRCIPTION
-CREATE TABLE pump_description (
+
+
+-- PUMP STATION
+CREATE TABLE pump_station (
 id 					SERIAL			PRIMARY KEY
 ,model_id			int				NOT NULL REFERENCES pump_model(id));
 
