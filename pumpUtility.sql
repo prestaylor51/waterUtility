@@ -2,11 +2,11 @@
 
 
 -- DROP all tables and data 
-DROP TABLE pump_model, pump_station, suction CASCADE;
+DROP TABLE pump_model, pump_station, suction, organization CASCADE;
 
 -- PUMP_MODEL --
-CREATE TABLE pump_model(
-id 					SERIAL			PRIMARY KEY
+CREATE TABLE pump_model
+(id 					SERIAL			PRIMARY KEY
 ,manufacturer 		VARCHAR(100) 
 ,model 				VARCHAR(100)	UNIQUE
 ,motor_hp			INT
@@ -21,15 +21,28 @@ id 					SERIAL			PRIMARY KEY
 ,col_pipe_c_factor	int
 ,stages				int
 ,specific_cap		int);
-
+-- Need to store the manufacturer curve and test cure in BOLB column
 -- END PUMP_MODEL --
 
+-- ORGANIZATION --
 
+CREATE TABLE organization 
+(id 		SERIAL		PRIMARY KEY
+ ,name		VARCHAR(100) NOT NULL
+ );
+
+-- END ORGANIZATION 
 
 -- PUMP STATION
-CREATE TABLE pump_station (
-id 					SERIAL			PRIMARY KEY
-,model_id			int				NOT NULL REFERENCES pump_model(id));
+CREATE TABLE pump_station 
+(id 					SERIAL			PRIMARY KEY
+,station_number		VARCHAR(100)	NOT NULL
+,model_id			INT				NOT NULL REFERENCES pump_model(id)
+,organization_id	INT 			NOT NULL REFERENCES organization(id)
+,flow_mgd			INT
+,flow_gpm			INT
+,tdh_ft				INT
+);
 
 -- SUCTION --
 CREATE TABLE suction (

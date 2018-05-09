@@ -8,3 +8,8 @@
 *	  excel spreadsheet from query results.
 *	- Intuative user interface.
 ********************************************************************
+
+Work Needed
+	How to store the manufacturer and test pump curves
+	What web stack to use.
+	How to use REST API with Excel 
