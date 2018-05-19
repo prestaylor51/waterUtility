@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/prestaylor51/waterUtility/issues"
   },
-  "homepage": "https://github.com/prestaylor51/waterUtility#readme"
+  "homepage": "https://github.com/prestaylor51/waterUtility#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }

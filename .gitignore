@@ -1,2 +1,3 @@
 # Ignore the excel files
-*/excel
+/excel
+/node_modules
