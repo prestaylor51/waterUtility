@@ -24,6 +24,26 @@ CREATE TABLE pump_model
 -- Need to store the manufacturer curve and test cure in BOLB column
 -- END PUMP_MODEL --
 
+-- Seed some pump models --
+
+Insert Into pump_model
+Values 
+(nextval('pump_model_id_seq')
+,'PumpCompany'
+,'Pump 2000'
+,100
+,220
+,90
+,4.3
+,2.4
+,11
+,5
+,7.8
+,7
+,8
+,3
+,9);
+
 -- ORGANIZATION --
 
 CREATE TABLE organization 
