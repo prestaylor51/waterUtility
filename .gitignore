@@ -1,3 +1,2 @@
 # Ignore the excel files
-excel/
-notes.txt
+*/excel
