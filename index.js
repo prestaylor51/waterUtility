@@ -5,23 +5,31 @@
 var express = require('express');
 var app = express();
 
-// Get HTTP library
-const http = require('http');
 const port = 3000;
 
-const requestHandler = (request, response) => {
-	console.log(request.url);
+// Get HTTP library
+// const http = require('http');
+// const port = 3000;
 
-	response.end('Greetings earthling.');
-}
+// const requestHandler = (request, response) => {
+// 	console.log(request.url);
 
-const server = http.createServer(requestHandler);
+// 	response.end('Greetings earthling.');
+// }
 
-server.listen(port, (err) => {
+// const server = http.createServer(requestHandler);
 
-	if (err) {
-		return console.log('something went wrong!', err)
-	}
+// server.listen(port, (err) => {
 
-	console.log("Server is listening on port " + port);
-})
+// 	if (err) {
+// 		return console.log('something went wrong!', err)
+// 	}
+
+// 	console.log("Server is listening on port " + port);
+// })
+
+app.get('/', (req, res) => res.send('Mesa Water Utility'));
+
+app.listen(3000, () => console.log('Water Utility is Running on port' + port ));
+
+

@@ -1,3 +1,4 @@
 # Ignore the excel files
 /excel
 /node_modules
+/referenceFiles
