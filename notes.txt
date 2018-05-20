@@ -11,3 +11,8 @@ Wed May 9
 	I'm thinking that we might be able to forget the browser and use excell
 	insert into the database and to query aswell. As long as VBA supports 
 	RESTful ASI call then Excell could be the only interface we need.
+
+Saturday May 19th
+	I have decide to do some prototyping using node.js to build my 
+	API.
+	I will be using express with a few other node.js libraries. 
