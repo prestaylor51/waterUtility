@@ -16,3 +16,19 @@ Saturday May 19th
 	I have decide to do some prototyping using node.js to build my 
 	API.
 	I will be using express with a few other node.js libraries. 
+
+Talk with Spencer
+	Interface
+
+	Features
+		Few years at a time on one graph to show the change in eficiency
+		nice to have a table to copy and past to add other stuff.
+
+	work -> flow and pressure
+
+	sometimes the hp and volts are usable
+		have featue to toggle on the difffernt graphs
+	
+	add install data.
+
+	

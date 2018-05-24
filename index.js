@@ -7,6 +7,22 @@ var app = express();
 
 const port = 3000;
 
+// Modules
+var dbtest = require('./Model/connectdb.js');
+
+
+app.get('/', (req, res) => res.send('Mesa Water Utility'));
+app.get('/dbTest', dbtest.testdb);
+
+app.listen(3000, () => console.log('Water Utility is Running on port' + port ));
+
+
+
+
+
+
+
+
 // Get HTTP library
 // const http = require('http');
 // const port = 3000;
@@ -27,9 +43,3 @@ const port = 3000;
 
 // 	console.log("Server is listening on port " + port);
 // })
-
-app.get('/', (req, res) => res.send('Mesa Water Utility'));
-
-app.listen(3000, () => console.log('Water Utility is Running on port' + port ));
-
-
