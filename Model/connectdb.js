@@ -11,7 +11,10 @@ function testdb(req, res,) {
 	  port: 5432,
 	})
 
-	pool.query('SELECT * FROM pump_model;', (err, result) => {
+	pool.query('                                            \
+				SELECT model, motor_hp, stages, voltage    	\
+				 	FROM pump_model;						\
+			   ', (err, result) => {
 	  console.log(err, res);
 	  pool.end();
       
