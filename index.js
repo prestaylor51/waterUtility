@@ -12,6 +12,11 @@ var dbtest = require('./Model/connectdb.js');
 
 
 app.get('/', (req, res) => res.send('Mesa Water Utility'));
+
+/* 
+* A simple test to get data from the database and send it back
+* to Excel. 
+*/
 app.get('/dbTest', dbtest.testdb);
 
 app.listen(3000, () => console.log('Water Utility is Running on port' + port ));
