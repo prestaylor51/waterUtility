@@ -43,7 +43,6 @@ VALUES
 (nextval('pump_station_id_seq')
 ,'SBDWPS'
 ,1
-,1
 ,11.00
 ,7640
 ,207
@@ -51,7 +50,10 @@ VALUES
 ,1444.50
 ,1
 );
+
 -- PUMP SEED
+
+
 -- SUCTION SEED
 -- PUMP TEST
 

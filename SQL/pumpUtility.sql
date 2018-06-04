@@ -12,7 +12,7 @@ CREATE TABLE manufacturer
 CREATE TABLE service_zone
 (
 id 	SERIAL PRIMARY KEY
-, name 	VARCHAR(100)
+,name 	VARCHAR(100)
 );
 
 -- ORGANIZATION --
@@ -50,31 +50,31 @@ CREATE TABLE pump_model
 -- PUMP STATION
 CREATE TABLE pump_station 
 (id 					SERIAL			PRIMARY KEY
-,station_number		VARCHAR(100)	NOT NULL
-,model_id			INT				NOT NULL REFERENCES pump_model(id)
+,station_number		VARCHAR(100)		NOT NULL
 ,organization_id	INT 				NOT NULL REFERENCES organization(id)
 ,flow_mgd			NUMERIC(4, 2)
 ,flow_gpm			INT
 ,tdh_ft				INT
 ,pump_dis_hdr_cl_elev_ft 	NUMERIC(6,2)
 ,res_floor_elev				NUMERIC(6,2)
-,service_zone		INT  			REFERENCES	service_zone(id)
+,service_zone		INT  				NOT NULL REFERENCES	service_zone(id)
 );
 
 -- PUMP
 CREATE TABLE pump
-(id 		SERIAL PRIMARY KEY
-,station_id INT REFERENCES pump_station(id)
-,pump_number int NOT NULL
-,install_date DATE
-,test_curve BYTEA 
+(id 			SERIAL PRIMARY KEY
+,pump_model_id	INT NOT NULL REFERENCES pump_model(id)
+,station_id		INT NOT NULL REFERENCES pump_station(id)
+,pump_number	int NOT NULL
+,install_date	DATE
+,test_curve		BYTEA 
+,is_active		BOOL	NOT NULL
 );
 
 -- PUMP TEST
 CREATE TABLE pump_test
 (id  				SERIAL	PRIMARY	KEY	
-,pump_station_id 	int REFERENCES pump_station(id)
-,pump_model_id 		INT REFERENCES pump_model(id)
+,pump_id			INT NOT NULL REFERENCES pump(id)
 ,test_number   		INT	
 ,test_date  		DATE				
 ,speed_percent		INT	
@@ -87,3 +87,4 @@ CREATE TABLE pump_test
 );
 
 -- well, 
+-- Where should Suciton be included as foreign key
