@@ -8,7 +8,7 @@ var app = express();
 const port = 3000;
 
 // Modules
-var dbtest = require('./Model/connectdb.js');
+var dbtest = require('./Endpoints/connectdb.js');
 
 
 app.get('/', (req, res) => res.send('Mesa Water Utility'));

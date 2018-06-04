@@ -15,7 +15,8 @@ function testdb(req, res,) {
 				SELECT model_number, motor_hp, stages, voltage    	\
 				 	FROM pump_model;						\
 			   ', (err, result) => {
-	  console.log(err, res);
+	  //console.log(err, res);
+	  console.log("Attempting connection to DB..");
 	  pool.end();
       
       if (err) {
@@ -23,7 +24,7 @@ function testdb(req, res,) {
 		}
 
 	  res.send(result.rows);
-
+	  console.log("Conection Successfull.");
 	})
 
 
