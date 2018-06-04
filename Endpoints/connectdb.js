@@ -12,7 +12,7 @@ function testdb(req, res,) {
 	})
 
 	pool.query('                                            \
-				SELECT model, motor_hp, stages, voltage    	\
+				SELECT model_number, motor_hp, stages, voltage    	\
 				 	FROM pump_model;						\
 			   ', (err, result) => {
 	  console.log(err, res);

@@ -24,7 +24,7 @@ CREATE TABLE organization
 -- SUCTION --
 CREATE TABLE suction (
 id 				SERIAL		PRIMARY KEY
-,sucioin_type	VARCHAR(100) 	NOT NULL);
+,suction_type	VARCHAR(100) 	NOT NULL);
 
 -- PUMP_MODEL --
 CREATE TABLE pump_model
@@ -52,8 +52,8 @@ CREATE TABLE pump_station
 (id 					SERIAL			PRIMARY KEY
 ,station_number		VARCHAR(100)	NOT NULL
 ,model_id			INT				NOT NULL REFERENCES pump_model(id)
-,organization_id	INT 			NOT NULL REFERENCES organization(id)
-,flow_mgd			INT
+,organization_id	INT 				NOT NULL REFERENCES organization(id)
+,flow_mgd			NUMERIC(4, 2)
 ,flow_gpm			INT
 ,tdh_ft				INT
 ,pump_dis_hdr_cl_elev_ft 	NUMERIC(6,2)
