@@ -29,6 +29,6 @@ Talk with Spencer
 	sometimes the hp and volts are usable
 		have featue to toggle on the difffernt graphs
 	
-	add install data.
+	add install date.
 
 	

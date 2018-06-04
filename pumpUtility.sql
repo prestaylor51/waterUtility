@@ -1,14 +1,36 @@
--- SQL for the pumputility database --
-
-
+-- Pump Assesment Utility 
 -- DROP all tables and data 
-DROP TABLE pump_model, pump_station, suction, organization CASCADE;
+DROP TABLE manufacturer, service_zone, organization, pump_model, pump_station, pump, suction, pump_test CASCADE;
+
+-- MANUFACTURER
+CREATE TABLE manufacturer
+(id Serial PRIMARY KEY
+,name VARCHAR(100)
+);
+
+-- SERVICE ZONE
+CREATE TABLE service_zone
+(
+id 	SERIAL PRIMARY KEY
+, name 	VARCHAR(100)
+);
+
+-- ORGANIZATION --
+CREATE TABLE organization 
+(id 		SERIAL		PRIMARY KEY
+ ,name		VARCHAR(100) NOT NULL
+ );
+
+-- SUCTION --
+CREATE TABLE suction (
+id 				SERIAL		PRIMARY KEY
+,sucioin_type	VARCHAR(100) 	NOT NULL);
 
 -- PUMP_MODEL --
 CREATE TABLE pump_model
-(id 					SERIAL			PRIMARY KEY
-,manufacturer 		VARCHAR(100) 
-,model 				VARCHAR(100)	UNIQUE
+(id 					SERIAL		PRIMARY KEY
+,manufacturer 		INT 			REFERENCES manufacturer(id) 
+,model_number 		VARCHAR(100)	UNIQUE
 ,motor_hp			INT
 ,voltage			INT
 ,rmp				INT
@@ -20,38 +42,10 @@ CREATE TABLE pump_model
 ,line_shaft_hp_loss	int
 ,col_pipe_c_factor	int
 ,stages				int
-,specific_cap		int);
+,specific_cap		int
+,impeller_trim_in	NUMERIC(4, 2)
+,manufacturer_curve BYTEA)	;
 -- Need to store the manufacturer curve and test cure in BOLB column
--- END PUMP_MODEL --
-
--- Seed some pump models --
-
-Insert Into pump_model
-Values 
-(nextval('pump_model_id_seq')
-,'PumpCompany'
-,'Pump 2000'
-,100
-,220
-,90
-,4.3
-,2.4
-,11
-,5
-,7.8
-,7
-,8
-,3
-,9);
-
--- ORGANIZATION --
-
-CREATE TABLE organization 
-(id 		SERIAL		PRIMARY KEY
- ,name		VARCHAR(100) NOT NULL
- );
-
--- END ORGANIZATION 
 
 -- PUMP STATION
 CREATE TABLE pump_station 
@@ -62,11 +56,34 @@ CREATE TABLE pump_station
 ,flow_mgd			INT
 ,flow_gpm			INT
 ,tdh_ft				INT
+,pump_dis_hdr_cl_elev_ft 	NUMERIC(6,2)
+,res_floor_elev				NUMERIC(6,2)
+,service_zone		INT  			REFERENCES	service_zone(id)
 );
 
--- SUCTION --
-CREATE TABLE suction (
-id 				SERIAL		PRIMARY KEY
-,suciton_type	VARCHAR(100) 	NOT NULL);
+-- PUMP
+CREATE TABLE pump
+(id 		SERIAL PRIMARY KEY
+,station_id INT REFERENCES pump_station(id)
+,pump_number int NOT NULL
+,install_date DATE
+,test_curve BYTEA 
+);
+
+-- PUMP TEST
+CREATE TABLE pump_test
+(id  				SERIAL	PRIMARY	KEY	
+,pump_station_id 	int REFERENCES pump_station(id)
+,pump_model_id 		INT REFERENCES pump_model(id)
+,test_number   		INT	
+,test_date  		DATE				
+,speed_percent		INT	
+,res_level_ft		NUMERIC(4, 2)
+,pmp_flg_psi		NUMERIC(4, 1)
+,header_psi			NUMERIC(3, 1)
+,dis_flow_mgd		NUMERIC(2, 1)
+,ave_amps			NUMERIC(3, 1)
+,ave_volts			INT	
+);
 
 -- well, 

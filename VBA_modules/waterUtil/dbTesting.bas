@@ -63,16 +63,16 @@ Sub jsonToExcel(jsonText As String, rowStart As Long, colStart As Long)
     ' Iterate through rows
     For Each row In jsonObj
         
-        'ws.Cells(r, c + 0) = row("stages")
-        'ws.Cells(r, c + 1) = row("motor_hp")
-        'ws.Cells(r, c + 2) = row("stages")
-        'ws.Cells(r, c + 3) = row("voltage")
+        ws.Cells(r, c + 0) = row("stages")
+        ws.Cells(r, c + 1) = row("motor_hp")
+        ws.Cells(r, c + 2) = row("stages")
+        ws.Cells(r, c + 3) = row("voltage")
                                         
         'r = r + 1
         
-        For Each item In row
-            ws.Cells(10, 5) = item.Value
-        Next
+        'For Each item In row
+          '  ws.Cells(10, 5) = item.Value
+       ' Next
         
     Next
     
