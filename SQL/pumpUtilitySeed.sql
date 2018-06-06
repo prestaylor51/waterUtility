@@ -52,10 +52,31 @@ VALUES
 );
 
 -- PUMP SEED
-
+INSERT INTO pump
+VALUES
+(nextval('pump_id_seq')
+,1
+,1
+,1
+,'2018-6-5'
+,null
+,'true');
 
 -- SUCTION SEED
 -- PUMP TEST
+INSERT INTO pump_test
+VALUES 
+(nextval('pump_test_id_seq')
+,1
+,1
+,'2018-4-16'
+,100
+,23.05
+,133.2
+,58.5
+,0.00
+,59
+,4070);
 
 -- Seed some pump models --
 

@@ -50,7 +50,7 @@ CREATE TABLE pump_model
 -- PUMP STATION
 CREATE TABLE pump_station 
 (id 					SERIAL			PRIMARY KEY
-,station_number		VARCHAR(100)		NOT NULL
+,station_number		VARCHAR(100)		UNIQUE NOT NULL
 ,organization_id	INT 				NOT NULL REFERENCES organization(id)
 ,flow_mgd			NUMERIC(4, 2)
 ,flow_gpm			INT
@@ -62,13 +62,13 @@ CREATE TABLE pump_station
 
 -- PUMP
 CREATE TABLE pump
-(id 			SERIAL PRIMARY KEY
-,pump_model_id	INT NOT NULL REFERENCES pump_model(id)
-,station_id		INT NOT NULL REFERENCES pump_station(id)
-,pump_number	int NOT NULL
-,install_date	DATE
-,test_curve		BYTEA 
-,is_active		BOOL	NOT NULL
+(id 				SERIAL PRIMARY KEY
+,pump_model_id		INT NOT NULL REFERENCES pump_model(id)
+,pump_station_id	INT NOT NULL REFERENCES pump_station(id)
+,pump_number		int NOT NULL
+,install_date		DATE
+,test_curve			BYTEA 
+,is_active			BOOL	NOT NULL
 );
 
 -- PUMP TEST

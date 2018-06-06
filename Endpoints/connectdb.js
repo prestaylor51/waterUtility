@@ -24,7 +24,7 @@ function testdb(req, res,) {
 		}
 
 	  res.send(result.rows);
-	  console.log("Conection Successfull.");
+	 // console.log("Conection Successfull.");
 	})
 
 
