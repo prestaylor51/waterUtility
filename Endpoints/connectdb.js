@@ -4,11 +4,13 @@ function testdb(req, res,) {
 	const {Pool, Client} = require('pg');
 
 	const pool = new Pool({
-	  user: 'postgres',
-	  host: 'localhost',
-	  database: 'pumputility',
-	  password: 'postgres',
-	  port: 5432,
+	  // user: 'postgres',
+	  // host: 'localhost',
+	  // database: 'pumputility',
+	  // password: 'postgres',
+	  // port: 5432,
+	  connectionString: process.env.DATABASE_URL,
+  	  ssl: true
 	})
 
 	pool.query('                                            \
