@@ -4,8 +4,9 @@
 // Use the express library and make a variable(app) to access functionality
 var express = require('express');
 var app = express();
+const path = reqire('path');
 
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Modules
 var dbtest = require('./Endpoints/connectdb.js');
@@ -19,9 +20,7 @@ app.get('/', (req, res) => res.send('Mesa Water Utility'));
 */
 app.get('/dbTest', dbtest.testdb);
 
-app.listen(3000, () => console.log('Water Utility is Running on port' + port ));
-
-
+app.listen(PORT, () => console.log('Water Utility is Running on port' + port ));
 
 
 
