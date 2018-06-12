@@ -4,7 +4,6 @@
 // Use the express library and make a variable(app) to access functionality
 var express = require('express');
 var app = express();
-const path = reqire('path');
 
 const PORT = process.env.PORT || 3000;
 
