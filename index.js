@@ -19,7 +19,7 @@ app.get('/', (req, res) => res.send('Mesa Water Utility'));
 */
 app.get('/dbTest', dbtest.testdb);
 
-app.listen(PORT, () => console.log('Water Utility is Running on port' + port ));
+app.listen(PORT, () => console.log('Water Utility is Running on port' + PORT ));
 
 
 
