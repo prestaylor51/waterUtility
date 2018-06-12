@@ -5,12 +5,14 @@
 var express = require('express');
 var app = express();
 
+// Get Port
 const PORT = process.env.PORT || 3000;
 
 // Modules
 var dbtest = require('./Endpoints/connectdb.js');
 
-
+/* GET */
+// Home
 app.get('/', (req, res) => res.send('Mesa Water Utility'));
 
 /* 
@@ -19,30 +21,7 @@ app.get('/', (req, res) => res.send('Mesa Water Utility'));
 */
 app.get('/dbTest', dbtest.testdb);
 
+
+// Listen
 app.listen(PORT, () => console.log('Water Utility is Running on port' + PORT ));
 
-
-
-
-
-
-// Get HTTP library
-// const http = require('http');
-// const port = 3000;
-
-// const requestHandler = (request, response) => {
-// 	console.log(request.url);
-
-// 	response.end('Greetings earthling.');
-// }
-
-// const server = http.createServer(requestHandler);
-
-// server.listen(port, (err) => {
-
-// 	if (err) {
-// 		return console.log('something went wrong!', err)
-// 	}
-
-// 	console.log("Server is listening on port " + port);
-// })

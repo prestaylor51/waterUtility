@@ -1,21 +1,18 @@
 // Connect to Postgres
+var db = require('../Endpoints/db.js');
+
+/* TEST DB */
 function testdb(req, res,) {
 
 	const {Pool, Client} = require('pg');
 
-	const pool = new Pool({
-	  // user: 'postgres',
-	  // host: 'localhost',
-	  // database: 'pumputility',
-	  // password: 'postgres',
-	  // port: 5432,
-	  connectionString: process.env.DATABASE_URL,
-  	  ssl: true
-	})
+	// Get pool
+	pool = db.remoteDbConnect();
 
-	pool.query('                                            \
+	// Make Query
+	pool.query('                                                    \
 				SELECT model_number, motor_hp, stages, voltage    	\
-				 	FROM pump_model;						\
+				 	FROM pump_model;						        \
 			   ', (err, result) => {
 	  //console.log(err, res);
 	  console.log("Attempting connection to DB..");
@@ -26,7 +23,7 @@ function testdb(req, res,) {
 		}
 
 	  res.send(result.rows);
-	 // console.log("Conection Successfull.");
+	  console.log("Conection Successfull.");
 	})
 
 
