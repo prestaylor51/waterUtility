@@ -10,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 // Modules
 var dbtest = require('./Endpoints/connectdb.js');
+var dbInsert = require('./Endpoints/dataEntry.js');
 
 /* GET */
 // Home
@@ -21,6 +22,13 @@ app.get('/', (req, res) => res.send('Mesa Water Utility'));
 */
 app.get('/dbTest', dbtest.testdb);
 
+/* POST */
+// Insert pump tests
+app.post('/dbInsertPumpTest', dbInsert.insertPumpTest);
+/*app.post('/dbInsertPumpTest',(req, res) => {
+	console.log('hit endpoint!');
+	res.send('made post')
+});*/
 
 // Listen
 app.listen(PORT, () => console.log('Water Utility is Running on port' + PORT ));

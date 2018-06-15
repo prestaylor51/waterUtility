@@ -12,18 +12,18 @@ function testdb(req, res,) {
 	// Make Query
 	pool.query('                                                    \
 				SELECT model_number, motor_hp, stages, voltage    	\
-				 	FROM pump_model;						        \
-			   ', (err, result) => {
-	  //console.log(err, res);
-	  console.log("Attempting connection to DB..");
-	  pool.end();
+				FROM pump_model;',									
+		(err, result) => {
+		//console.log(err, res);
+		console.log("Attempting connection to DB..");
+		pool.end();
       
-      if (err) {
-			console.log('error with database');
+		if (err) {
+				console.log('error with database');
 		}
 
-	  res.send(result.rows);
-	  console.log("Conection Successfull.");
+		res.send(result.rows);
+		console.log("Conection Successfull.");
 	})
 
 
