@@ -66,6 +66,7 @@ CREATE TABLE pump
 ,pump_model_id		INT NOT NULL REFERENCES pump_model(id)
 ,pump_station_id	INT NOT NULL REFERENCES pump_station(id)
 ,pump_number		int NOT NULL
+,serial_number		VARCHAR(20)    -- unique????
 ,install_date		DATE
 ,test_curve			BYTEA 
 ,is_active			BOOL	NOT NULL
@@ -87,4 +88,4 @@ CREATE TABLE pump_test
 );
 
 -- well, 
--- Where should Suciton be included as foreign key
+-- Where should Suction be included as foreign key

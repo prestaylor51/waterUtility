@@ -4,6 +4,7 @@
 // Use the express library and make a variable(app) to access functionality
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 
 // Get Port
 const PORT = process.env.PORT || 3000;
@@ -11,6 +12,12 @@ const PORT = process.env.PORT || 3000;
 // Modules
 var dbtest = require('./Endpoints/connectdb.js');
 var dbInsert = require('./Endpoints/dataEntry.js');
+
+//Middleware
+app.use( bodyParser.json());
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+	extended: true
+})); 
 
 /* GET */
 // Home

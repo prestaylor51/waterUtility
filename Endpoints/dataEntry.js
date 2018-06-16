@@ -8,6 +8,9 @@ var db = require('../Endpoints/db.js');
 
 function insertPumpTest (req, res) {
 	
+	// Trying to se the query string
+	console.log(req.body['testvar']);
+
 	const {Pool, Client} = require('pg');
 
 	// Get pool
