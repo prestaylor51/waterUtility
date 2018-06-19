@@ -1,7 +1,7 @@
 function remoteDbConnect() {
 	const {Pool, Client} = require('pg');
 
-		console.log(process.env.DATABASE_URL);
+		console.log("DATABASE_URL: " + process.env.DATABASE_URL);
 		
 		if (process.env.DATABASE_URL) {
 			const pool = new Pool({

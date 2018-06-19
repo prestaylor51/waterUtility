@@ -1,7 +1,7 @@
 /*************************************
 * File: INDEX.JS
 *************************************/
-// Use the express library and make a variable(app) to access functionality
+// Use the express library and make a variable (app) to access functionality
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -9,34 +9,29 @@ var bodyParser = require('body-parser');
 // Get Port
 const PORT = process.env.PORT || 3000;
 
-// Modules
+/* Modules */
 var dbtest = require('./Endpoints/connectdb.js');
-var dbInsert = require('./Endpoints/dataEntry.js');
 
-//Middleware
-app.use( bodyParser.json());
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+/* Middleware */
+app.use(bodyParser.json());			// Body-Parser for getting data from requests
+app.use(bodyParser.urlencoded({     // Body-Parser for getting data from requests
 	extended: true
 })); 
 
-/* GET */
-// Home
-app.get('/', (req, res) => res.send('Mesa Water Utility'));
+/* Controller */
+dataEntryControl = require('./Controller/dataEntry.js');
 
-/* 
-* A simple test to get data from the database and send it back
-* to Excel. 
-*/
-app.get('/dbTest', dbtest.testdb);
+/* Model */
+dataEntryModel = require('./Model/dataEntry.js');
 
-/* POST */
-// Insert pump tests
-app.post('/dbInsertPumpTest', dbInsert.insertPumpTest);
-/*app.post('/dbInsertPumpTest',(req, res) => {
-	console.log('hit endpoint!');
-	res.send('made post')
-});*/
+/* ROUTING */
+//// GET ////
+app.get('/', (req, res) => res.send('Mesa Water Utility')); // Home
+app.get('/dbTest', dbtest.testdb);							// Test
 
-// Listen
+//// POST ////
+app.post('/InsertPumpTest', dataEntryControl.handlePumpTest);		// Data Entry
+
+// Start Server
 app.listen(PORT, () => console.log('Water Utility is Running on port' + PORT ));
 
