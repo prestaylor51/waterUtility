@@ -1,13 +1,12 @@
 // Connect to Postgres
-var db = require('../Endpoints/db.js');
+var db = require('./db.js');
 
 /* TEST DB */
 function testdb(req, res,) {
 
-	const {Pool, Client} = require('pg');
-
 	console.log(req);
-	console.log("testing tester");
+    console.log("testing tester");
+
 	// Get pool
 	pool = db.remoteDbConnect();
 

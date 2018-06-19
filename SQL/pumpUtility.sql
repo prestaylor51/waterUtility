@@ -46,6 +46,7 @@ CREATE TABLE pump_model
 ,impeller_trim_in	NUMERIC(4, 2)
 ,manufacturer_curve BYTEA)	;
 -- Need to store the manufacturer curve and test cure in BOLB column
+-- Turns out there can be a multiple manufacturers that make the same model 
 
 -- PUMP STATION
 CREATE TABLE pump_station 

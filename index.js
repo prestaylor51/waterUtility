@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 
 /* Modules */
-var dbtest = require('./Endpoints/connectdb.js');
+var dbtest = require('./Db/connectdb.js');
 
 /* Middleware */
 app.use(bodyParser.json());			// Body-Parser for getting data from requests

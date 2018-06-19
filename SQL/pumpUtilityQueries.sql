@@ -18,14 +18,17 @@ JOIN manufacturer m
 INSERT INTO pump_test
 VALUES
 (nextval(''pump_test_seq)	-- id
-, (SELECT id from pump WHERE pump_model = <>
-	AND pump_number = <> AND serial_number = <> AND is_active = 't')-- pump_id
+, (SELECT id FROM pump p
+	WHERE (SELECT id FROM pump_model pm
+				WHERE pm.model_number = <>) = p.pump_model_id
+	AND (SELECT id FROM pump_station ps
+				WHERE ps.station_number = <>) = p.pump_station_id				
+	AND p.pump_number = 4 AND p.serial_number = <> AND p.is_active = <>) -- pump_id
 ,<>		-- test_number
 ,<>		-- test_date
 ,<>		-- speed_percent
 ,<>		-- res_level_ft
 ,<>		-- pmp_flg_psi
-,<>		-- header_psi
 ,<>		-- header_psi
 ,<>		-- dis_flow_mgd
 ,<>		-- ave_amps

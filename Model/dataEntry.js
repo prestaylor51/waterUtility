@@ -1,5 +1,5 @@
 // Connect to Postgres
-var db = require('../Endpoints/db.js');
+var db = require('../Db/db.js');
 
 /*
 * INSERT PUMP TEST 
