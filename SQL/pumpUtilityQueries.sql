@@ -14,16 +14,16 @@ JOIN manufacturer m
 	ON pm.manufacturer = m.id;
 
 
--- Insert Pump Test
+-- INSERT PUMP TEST
 INSERT INTO pump_test
 VALUES
 (nextval(''pump_test_seq)	-- id
 , (SELECT id FROM pump p
 	WHERE (SELECT id FROM pump_model pm
-				WHERE pm.model_number = <>) = p.pump_model_id
+				WHERE pm.model_number = </**/>) = p.pump_model_id
 	AND (SELECT id FROM pump_station ps
-				WHERE ps.station_number = <>) = p.pump_station_id				
-	AND p.pump_number = 4 AND p.serial_number = <> AND p.is_active = <>) -- pump_id
+				WHERE ps.station_number = </**/>) = p.pump_station_id				
+	AND p.pump_number = </**/> AND p.serial_number = </**/> AND p.is_active = <>) -- pump_id
 ,<>		-- test_number
 ,<>		-- test_date
 ,<>		-- speed_percent
@@ -31,8 +31,12 @@ VALUES
 ,<>		-- pmp_flg_psi
 ,<>		-- header_psi
 ,<>		-- dis_flow_mgd
-,<>		-- ave_amps
-,<>		-- ave_volts
+,<>		-- amps_1
+,<>		-- amps_2
+,<>		-- amps_3
+,<>		-- volts_1
+,<>		-- volts_2
+,<>		-- volts_3
 );
 
 Insert into pump_test
@@ -52,4 +56,8 @@ VALUES
 ,58.5 
 ,0.00 
 ,59
+,59
+,59
+,4070
+,4070
 ,4070);

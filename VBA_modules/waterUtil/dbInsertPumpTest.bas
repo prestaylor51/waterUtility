@@ -8,18 +8,28 @@ Attribute VB_Name = "dbInsertPumpTest"
 Sub makeDbInsert()
     'Set a string to hold the serverURL
     Dim serverURL As String
-          
+    
+    'An array to hold the query data
+   ' Dim queryArray(1 to )
+    
     'Create a worsheet to put the response in
-    Dim ws As Worksheet: Set ws = Worksheets("SBFF Pump 1")
+    Dim ws As Worksheet: Set ws = Worksheets("PAUTestEntry")
     
     'Set the URL to
     serverURL = ws.[localhost]
+   ' serverURL = serverURL & "?testValue=test"
+    
+    Range("O24") = serverURL
+    
+    'Form query string
+    
     
     'Create a new request and send it
     Dim httpReq As New WinHttpRequest
     httpReq.Open "POST", serverURL, False
                       'protocol, url, async
-    httpReq.Send
+    'httpReq.SetRequestHeader "Content-type", "application/x-www-form-urlencoded"
+    httpReq.Send "testVar=testvalue"
     
     'Create var to hold response
     Dim strResp As String
@@ -31,7 +41,20 @@ Sub makeDbInsert()
         
 End Sub
 
+' FORM PUMP TEST DATA
+'   Constructs the query string that is sent to the server.
+Function formPumpTestData(col As Long) As String
+    ' String to hold pump test data
+    Dim dataString As String
+    
+    ' String for date
+    Dim TESTDATE As String: TESTDATE = Range(17, 2)
+    
+    ' Build the data string
+    
+    
 
+' JSON TO EXCEL
 Sub jsonToExcel(jsonText As String, rowStart As Long, colStart As Long)
     ' To hold the whole response
     Dim jsonObj As Object

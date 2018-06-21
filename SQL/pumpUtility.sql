@@ -84,8 +84,12 @@ CREATE TABLE pump_test
 ,pmp_flg_psi		NUMERIC(4, 1)
 ,header_psi			NUMERIC(3, 1)
 ,dis_flow_mgd		NUMERIC(2, 1)
-,ave_amps			NUMERIC(3, 1)
-,ave_volts			INT	
+,amps_1			NUMERIC(3, 1)
+,amps_2			NUMERIC(3, 1)
+,amps_3			NUMERIC(3, 1)
+,volts_1			INT	
+,volts_2			INT	
+,volts_3			INT	
 );
 
 -- well, 
