@@ -1,37 +1,47 @@
 Attribute VB_Name = "dbInsertPumpTest"
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' CONSTANTS
+'   Constants to help make the utility make flaexable
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Public Const DATA_START_COL = 2
+Public Const DATA_START_ROW = 22
+'
 
-'An example of how to use the JSON from the database
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' INSERT PUMP TEST
+'   This is a program to test communicating locally with
+'   the server for the water-utility
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Sub insertPumpTest()
 
-' SERVER TEST
-' This is a program to test communicating locally with
-' the server for the water-utility
-Sub makeDbInsert()
-    'Set a string to hold the serverURL
+    ' Set a string to hold the serverURL
     Dim serverURL As String
     
-    'An array to hold the query data
-   ' Dim queryArray(1 to )
+    ' An array to hold the query data
+    ' Dim queryArray(1 to )
     
     'Create a worsheet to put the response in
     Dim ws As Worksheet: Set ws = Worksheets("PAUTestEntry")
     
-    'Set the URL to
+    ' Set the URL to
     serverURL = ws.[localhost]
-   ' serverURL = serverURL & "?testValue=test"
+    ' serverURL = serverURL & "?testValue=test"
     
     Range("O24") = serverURL
     
-    'Form query string
+    ' Form query string
+    Dim dataString As String
     
+    dataString = formPumpTestData(DATA_START_COL, DATA_START_ROW, ws)
     
-    'Create a new request and send it
+    ' Create a new request and send it
     Dim httpReq As New WinHttpRequest
     httpReq.Open "POST", serverURL, False
                       'protocol, url, async
     'httpReq.SetRequestHeader "Content-type", "application/x-www-form-urlencoded"
     httpReq.Send "testVar=testvalue"
     
-    'Create var to hold response
+    ' Create var to hold response
     Dim strResp As String
     strResp = httpReq.ResponseText
     
@@ -41,20 +51,56 @@ Sub makeDbInsert()
         
 End Sub
 
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' FORM PUMP TEST DATA
 '   Constructs the query string that is sent to the server.
-Function formPumpTestData(col As Long) As String
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Function formPumpTestData(col As Long, row As Long, ws As Worksheet) As String
     ' String to hold pump test data
     Dim dataString As String
     
-    ' String for date
-    Dim TESTDATE As String: TESTDATE = Range(17, 2)
+    ' Form string
+    dataString = "?"
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    dataString = dataString &
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   
     
     ' Build the data string
-    
-    
-
+End Function
+          
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' JSON TO EXCEL
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Sub jsonToExcel(jsonText As String, rowStart As Long, colStart As Long)
     ' To hold the whole response
     Dim jsonObj As Object
