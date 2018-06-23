@@ -61,3 +61,12 @@ VALUES
 ,4070
 ,4070
 ,4070);
+
+SELECT * FROM pump p													
+		WHERE (SELECT id FROM pump_model pm										
+				WHERE pm.model_number = '22BLK') = p.pump_model_id					
+		AND (SELECT id FROM pump_station ps										
+				WHERE ps.station_number = 'SBFFPS') = p.pump_station_id				
+		AND p.pump_number = 1 											
+		AND p.serial_number = '78639-1-1' 												
+		AND p.is_active = 't';

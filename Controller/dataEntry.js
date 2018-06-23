@@ -8,18 +8,23 @@ function handlePumpTest (req, res) {
 	
 	console.log("Preparing to enter pump test.. ");
 
-	dataEntryModel.insertPumpTest(req, function(err, result) {
-		if (err) {
-			console.log("Error returning from the model.");
+	var params = req.body;
 
+	dataEntryModel.insertPumpTest(params, function(err, result) {
+		if (err) { // FAILURE 
+			console.log("Error in returning form model.");
+			res.send("FAILED");
+			return;
 		}
+		else {     // SUCCESS
+			console.log("Retured from dataEntry model successfully.");
+			console.log("results: " + result + "\n" + "Sending results.");
 
-		console.log("Retured from dataEntry model successfully.");
-		console.log("results: " + result + "\n" + "Sending results.");
+			console.log("Result: " + JSON.stringify(result.rows));
 
-		console.log("Result: " + JSON.stringify(result.rows));
-
-		res.send(result);
+			res.send(JSON.stringify(result.rows));
+		}
+		
 
 	});
 

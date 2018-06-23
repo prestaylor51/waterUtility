@@ -109,7 +109,7 @@ VALUES
 (nextval('pump_id_seq')
 ,2
 ,2
-,1
+,2
 ,'78639-1-1'
 ,'2018-1-1'
 ,null
