@@ -11,18 +11,23 @@ function insertPumpTest (data, callback) {
 	// Connect to DB
 	var pool = db.remoteDbConnect();
 
+	console.log(data.pumpModel + "\n" +
+				data.pumpStation + "\n" +
+				data.pumpNumber + "\n" +
+				data.pumpSerial + "\n")
+
 	// Form SQL
-	var sql = "Insert into pump_test 											\
+	var sql = "INSERT INTO pump_test 											\
 	VALUES																		\
 	(nextval('pump_test_id_seq')												\
-		,(SELECT id FROM pump p													\
-		WHERE (SELECT id FROM pump_model pm										\
-				WHERE pm.model_number = $1) = p.pump_model_id				\
-		AND (SELECT id FROM pump_station ps										\
-				WHERE ps.station_number = $2) = p.pump_station_id			\
-		AND p.pump_number = $3											\
-		AND p.serial_number = $4 											\
-		AND p.is_active = 't')													\
+	,(SELECT p.id FROM pump p													\
+		WHERE (SELECT pm.id FROM pump_model pm										\
+				WHERE pm.model_number = $1::varchar) = p.pump_model_id				\
+				AND (SELECT ps.id FROM pump_station ps										\
+						WHERE ps.station_number = $2::varchar) = p.pump_station_id			\
+				AND p.pump_number = $3::int											\
+				AND p.serial_number = $4::varchar										\
+				AND p.is_active = 't')													\
 	,$5																	\
 	,$6																			\
 	,$7																			\
@@ -37,11 +42,7 @@ function insertPumpTest (data, callback) {
 	,$16																		\
 	,$17);"																
 
-	var params = [/*'22BLK'
-				,'SBFFPS'
-				,'1'
-				,'78639-1-1'*/
-				data.pumpModel
+	var params = [data.pumpModel
 				,data.pumpStation
 				,data.pumpNumber
 				,data.pumpSerial
@@ -59,7 +60,7 @@ function insertPumpTest (data, callback) {
 				,data.volts2
 				,data.volts3]; 
 
-	// Make INSERT											// todo
+	// Make INSERT											
 	pool.query(sql, params, (err, result) => {                                       
 		pool.end();
 

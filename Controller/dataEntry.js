@@ -12,7 +12,7 @@ function handlePumpTest (req, res) {
 
 	dataEntryModel.insertPumpTest(params, function(err, result) {
 		if (err) { // FAILURE 
-			console.log("Error in returning form model.");
+			console.log("Error in returning from model.");
 			res.send("FAILED");
 			return;
 		}
