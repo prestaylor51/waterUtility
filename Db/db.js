@@ -1,5 +1,5 @@
 function remoteDbConnect() {
-	const {Pool, Client} = require('pg');
+	const {Pool} = require('pg');
 
 		console.log("DATABASE_URL: " + process.env.DATABASE_URL);
 		
@@ -7,7 +7,9 @@ function remoteDbConnect() {
 			const pool = new Pool({
 				connectionString: process.env.DATABASE_URL,
 		  	  	ssl: true
-	  	  	})
+			});
+			
+			console.log("Pool is connected at: " + process.env.DATABASE_URL);
 	  	  	return pool;
 		}
 		else {
