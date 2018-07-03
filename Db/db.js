@@ -17,7 +17,8 @@ function remoteDbConnect() {
 			  	database: 'pumputility',
 			  	password: 'postgres',
 			  	port: 5432,
-		  	})
+			  })
+			  console.log("Pool connected to localhost");
 		  	return pool;
 		}
 }

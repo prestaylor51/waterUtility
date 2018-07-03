@@ -44,12 +44,12 @@ VALUES
 (nextval('pump_test_id_seq')
 ,(SELECT id FROM pump p
 	WHERE (SELECT id FROM pump_model pm
-				WHERE pm.model_number = '27 FKH') = p.pump_model_id
+				WHERE pm.model_number = '22BLK') = p.pump_model_id
 	AND (SELECT id FROM pump_station ps
-				WHERE ps.station_number = 'SBDWPS') = p.pump_station_id				
-	AND p.pump_number = 4 AND p.serial_number = '78639-9-1' AND p.is_active = 't')
+				WHERE ps.station_number = 'SBFFPS') = p.pump_station_id				
+	AND p.pump_number = 1 AND p.serial_number = '78639-1-1' AND p.is_active = 't')
 ,1
-,'2018-04-18'
+,'2018-2-15'
 ,100
 ,23.05
 ,133.2
@@ -70,3 +70,8 @@ SELECT p.id FROM pump p
 		AND p.pump_number = 1 											
 		AND p.serial_number = '78639-1-1' 												
 		AND p.is_active = 't';
+
+Select p.id from pump p 
+	JOIN pump_model pm
+		ON p.pump_model_id = pm.model_number
+	JOIN 
