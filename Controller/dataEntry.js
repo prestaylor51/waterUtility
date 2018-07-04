@@ -18,8 +18,6 @@ function handlePumpTest (req, res) {
 		}
 		else {     // SUCCESS
 			console.log("Retured from dataEntry model successfully.");
-			console.log("results: " + result + "\n" + "Sending results.");
-
 			console.log("Result: " + JSON.stringify(result.rows));
 
 			res.send(JSON.stringify(result.rows));

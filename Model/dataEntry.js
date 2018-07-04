@@ -11,33 +11,29 @@ function insertPumpTest (data, callback) {
 	// Connect to DB
 	var pool = db.remoteDbConnect();
 
-	console.log(data.pumpModel + "\n" +
-				data.pumpStation + "\n" +
-				data.pumpNumber + "\n" +
-				data.pumpSerial + "\n")
 
 	// Form SQL
-	var sql = "INSERT INTO pump_test 											\
-	VALUES																		\
-	(nextval('pump_test_id_seq')												\
-	,(SELECT p.id FROM pump p 													\
-				WHERE (SELECT pm.id FROM pump_model pm										\
-									WHERE pm.model_number = $1) = p.pump_model_id				\
-				AND (SELECT ps.id FROM pump_station ps										\
-						WHERE ps.station_number = $2) = p.pump_station_id			\
+	var sql = "INSERT INTO pump_test 												\
+	VALUES																			\
+	(nextval('pump_test_id_seq')													\
+	,(SELECT p.id FROM pump p 														\
+				WHERE (SELECT pm.id FROM pump_model pm								\
+					WHERE pm.model_number = $1::varchar) = p.pump_model_id			\
+				AND (SELECT ps.id FROM pump_station ps								\
+					WHERE ps.station_number = $2::varchar) = p.pump_station_id		\
 				AND p.pump_number = $3::int											\
-				AND p.serial_number = $4										\
-				AND p.is_active = 't' )													\
-	,$5::int																\
+				AND p.serial_number = $4::varchar									\
+				AND p.is_active = 't' )												\
+	,$5::int																		\
 	,$6::date																		\
-	,$7::int																			\
-	,$8::numeric																			\
-	,$9::numeric																			\
-	,$10::numeric 																		\
-	,$11::numeric 																		\
-	,$12::numeric 																		\
-	,$13::numeric 																		\
-	,$14::numeric 																		\
+	,$7::int																		\
+	,$8::numeric																	\
+	,$9::numeric																	\
+	,$10::numeric 																	\
+	,$11::numeric 																	\
+	,$12::numeric 																	\
+	,$13::numeric 																	\
+	,$14::numeric 																	\
 	,$15::int																		\
 	,$16::int																		\
 	,$17::int )"																
