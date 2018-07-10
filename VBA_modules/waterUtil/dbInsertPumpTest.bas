@@ -23,7 +23,7 @@ Sub insertPumpTest()
     Dim i As Integer
     
     ' Make INSERTs one by one
-    For i = 0 To 0
+    For i = 0 To 9
         
         dataString = formPumpTestData(ws, i)
         
@@ -57,8 +57,6 @@ Sub insertPumpTest()
     
     ' Print Failed Tests
     Range("M27") = failedTests
-    
-    'Call jsonToExcel(strResp, 24, 15)
         
 End Sub
 
@@ -95,54 +93,6 @@ Function formPumpTestData(ws As Worksheet, testNumber As Integer) As String
       
 End Function
 
-''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-' JSON TO EXCEL
-''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-Sub jsonToExcel(jsonText As String, rowStart As Long, colStart As Long)
-    ' To hold the whole response
-    Dim jsonObj As Object
-    
-    ' To hold each row in
-    Dim row As Object, item As Variant
-    
-    ' An index
-    Dim r As Long
-    Dim c As Long
-        
-    ' A worksheet
-    Dim ws As Worksheet
-    
-    Set ws = Worksheets("serverTest")
-    
-    Set jsonObj = JsonConverter.ParseJson(jsonText)
-    
-    r = rowStart
-    c = colStart
-    
-    ws.Cells(r, 1) = "model"
-    ws.Cells(r, 2) = "motor hp"
-    ws.Cells(r, 3) = "stages"
-    ws.Cells(r, 4) = "voltage"
-    
-    r = r + 1
-    
-    ' Iterate through rows
-    For Each row In jsonObj
-        
-        ws.Cells(r, c + 0) = row("stages")
-        ws.Cells(r, c + 1) = row("motor_hp")
-        ws.Cells(r, c + 2) = row("stages")
-        ws.Cells(r, c + 3) = row("voltage")
-                                        
-        'r = r + 1
-        
-        'For Each item In row
-          '  ws.Cells(10, 5) = item.Value
-       ' Next
-        
-    Next
-    
-End Sub
 
 
 
