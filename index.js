@@ -20,14 +20,17 @@ app.use(bodyParser.urlencoded({     // Body-Parser for getting data from request
 
 /* Controller */
 dataEntryControl = require('./Controller/dataEntry.js');
+dataRetrievalControl = require('./Controller/dataRetrieval.js');
 
 /* Model */
 dataEntryModel = require('./Model/dataEntry.js');
+dataRetrievalModel = require('./Model/dataRetrieval.js');
 
 /* ROUTING */
 //// GET ////
 app.get('/', (req, res) => res.send('Mesa Water Utility')); // Home
 app.get('/dbTest', dbtest.testdb);							// Test
+app.get('/RetrievePumpData',dataRetrievalControl.handleTestRetrieval);
 
 //// POST ////
 app.post('/InsertPumpTest', dataEntryControl.handlePumpTest);		// Data Entry

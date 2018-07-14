@@ -5,7 +5,7 @@ Attribute VB_Name = "EngineerQuerySuite"
 ' SERVER TEST
 ' This is a program to test communicating locally with
 ' the server for the water-utility
-Sub main()
+Sub retrievePumpData()
     'Set a string to hold the serverURL
     Dim serverURL As String
           
@@ -13,7 +13,7 @@ Sub main()
     Dim ws As Worksheet: Set ws = Worksheets("PAUEngineerTemplate")
     
     'Set the URL to
-    serverURL = ws.[serverURL]
+    serverURL = ws.[localhost]
     
     'Create a new request and send it
     Dim httpReq As New WinHttpRequest
@@ -25,9 +25,9 @@ Sub main()
     Dim strResp As String
     strResp = httpReq.ResponseText
     
-    'Range("B3") = strResp
+    Range("O23") = strResp
     
-    Call jsonToExcel(strResp, 5, 1)
+    'Call jsonToExcel(strResp, 5, 1)
         
 End Sub
 

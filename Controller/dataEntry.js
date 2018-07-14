@@ -1,4 +1,4 @@
-// Get the Model
+// Get the Data Entry Model
 var dataEntryModel = require('../Model/dataEntry.js');
 
 /*
