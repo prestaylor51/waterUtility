@@ -11,7 +11,6 @@ function insertPumpTest (data, callback) {
 	// Connect to DB
 	var pool = db.remoteDbConnect();
 
-
 	// Form SQL
 	var sql = "INSERT INTO pump_test 												\
 	VALUES																			\

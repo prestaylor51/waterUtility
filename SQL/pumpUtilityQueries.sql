@@ -75,3 +75,38 @@ Select p.id from pump p
 	JOIN pump_model pm
 		ON p.pump_model_id = pm.model_number
 	JOIN 
+
+/* Data Retrieval */
+
+SELECT id FROM pump p
+	WHERE (SELECT id FROM pump_model pm
+			WHERE pm.model_number = </**/>) = p.pump_model_id
+					AND (SELECT id FROM pump_station ps
+						WHERE ps.station_number = </**/>) = p.pump_station_id				
+					AND p.pump_number = </**/> 
+					AND p.serial_number = </**/> 
+					AND p.is_active = <>
+
+SELECT * FROM pump_test
+WHERE pump_id = (SELECT id FROM pump p
+					WHERE (SELECT id FROM pump_model pm
+							WHERE pm.model_number = </**/>) = p.pump_model_id
+									AND (SELECT id FROM pump_station ps
+										WHERE ps.station_number = </**/>) = p.pump_station_id				
+									AND p.pump_number = </**/> 
+									AND p.serial_number = </**/> 
+									AND p.is_active = <>)
+	AND test_date > </**/>
+	AND test_date < </**/>
+
+SELECT * FROM pump_test
+WHERE pump_id = (SELECT id FROM pump p
+					WHERE (SELECT id FROM pump_model pm
+							WHERE pm.model_number = '22BLK') = p.pump_model_id
+									AND (SELECT id FROM pump_station ps
+										WHERE ps.station_number = 'SBFFPS') = p.pump_station_id				
+									AND p.pump_number = 1 
+									AND p.serial_number = '78639-1-1' 
+									AND p.is_active = 'true')
+	AND test_date >= '2016-01-01'
+	AND test_date <= '2017-01-01';
