@@ -24,9 +24,12 @@ function retrieveTestData(data, callback) {
                 AND test_date >= $5::date                                                                   \
                 AND test_date <= $6::date";
 
-    var params = [ //TODO
-
-    ];
+    var params = [data.pumpModel
+                ,data.pumpStation
+                ,data.pumpNumber
+                ,data.pumpSerial
+                ,data.startDate
+                ,data.endDate];
 
     pool.query(sql, params, (err, result) => {
         

@@ -15,11 +15,16 @@ Sub retrievePumpData()
     'Set the URL to
     serverURL = ws.[localhost]
     
+    'Get the data string
+    Dim dataString As String
+    
+    dataString = buildDataString()
+    
     'Create a new request and send it
     Dim httpReq As New WinHttpRequest
     httpReq.Open "GET", serverURL, False
                       'protocol, url, async
-    httpReq.Send
+    httpReq.Send dataString
     
     'Create var to hold response
     Dim strResp As String
@@ -31,7 +36,21 @@ Sub retrievePumpData()
         
 End Sub
 
+''''''''''''''''''''''''''''''''''''''''''''''''''
+' BUILD DATA STRING
+''''''''''''''''''''''''''''''''''''''''''''''''''
+Function buildDataString() As String
+    
+    Dim dataString As String
+    
+    
+    
 
+End Function
+
+''''''''''''''''''''''''''''''''''''''''''''''''''
+' JSON TO EXCEL
+''''''''''''''''''''''''''''''''''''''''''''''''''
 Sub jsonToExcel(jsonText As String, rowStart As Long, colStart As Long)
     ' To hold the whole response
     Dim jsonObj As Object
