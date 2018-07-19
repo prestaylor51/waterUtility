@@ -69,24 +69,23 @@ Function formPumpTestData(ws As Worksheet, testNumber As Integer) As String
     Dim dataString As String
     
     ' Form string
-    dataString = "pumpModel=" & CStr(ws.[pumpModel])
-    dataString = dataString & "&pumpStation=" & CStr(ws.[stationNumber])
-    dataString = dataString & "&pumpNumber=" & CStr(ws.[pumpNumber])
-    dataString = dataString & "&pumpSerial=" & CStr(ws.[pumpSerial])
-    dataString = dataString & "&testNumber=" & CStr(testNumber + 1)
-    dataString = dataString & "&testDate=" & CStr(ws.[testDate])
-    
-    dataString = dataString & "&percentSpeed=" & CStr(ws.Cells(DATA_START_ROW, DATA_START_COL + testNumber))
-    dataString = dataString & "&resLevel=" & CStr(ws.Cells(DATA_START_ROW + 1, DATA_START_COL + testNumber))
-    dataString = dataString & "&pumpFlagPsi=" & CStr(ws.Cells(DATA_START_ROW + 2, DATA_START_COL + testNumber))
-    dataString = dataString & "&headerPsi=" & CStr(ws.Cells(DATA_START_ROW + 3, DATA_START_COL + testNumber))
-    dataString = dataString & "&dischargeFlow=" & CStr(ws.Cells(DATA_START_ROW + 4, DATA_START_COL + testNumber))
-    dataString = dataString & "&amps1=" & CStr(ws.Cells(DATA_START_ROW + 5, DATA_START_COL + testNumber))
-    dataString = dataString & "&amps2=" & CStr(ws.Cells(DATA_START_ROW + 6, DATA_START_COL + testNumber))
-    dataString = dataString & "&amps3=" & CStr(ws.Cells(DATA_START_ROW + 7, DATA_START_COL + testNumber))
-    dataString = dataString & "&volts1=" & CStr(ws.Cells(DATA_START_ROW + 8, DATA_START_COL + testNumber))
-    dataString = dataString & "&volts2=" & CStr(ws.Cells(DATA_START_ROW + 9, DATA_START_COL + testNumber))
-    dataString = dataString & "&volts3=" & CStr(ws.Cells(DATA_START_ROW + 10, DATA_START_COL + testNumber))
+    dataString = "pumpModel=" & CStr(ws.[pumpModel]) _
+    & "&pumpStation=" & CStr(ws.[stationNumber]) _
+    & "&pumpNumber=" & CStr(ws.[pumpNumber]) _
+    & "&pumpSerial=" & CStr(ws.[pumpSerial]) _
+    & "&testNumber=" & CStr(testNumber + 1) _
+    & "&testDate=" & CStr(ws.[testDate]) _
+    & "&percentSpeed=" & CStr(ws.Cells(DATA_START_ROW, DATA_START_COL + testNumber)) _
+    & "&resLevel=" & CStr(ws.Cells(DATA_START_ROW + 1, DATA_START_COL + testNumber)) _
+    & "&pumpFlagPsi=" & CStr(ws.Cells(DATA_START_ROW + 2, DATA_START_COL + testNumber)) _
+    & "&headerPsi=" & CStr(ws.Cells(DATA_START_ROW + 3, DATA_START_COL + testNumber)) _
+    & "&dischargeFlow=" & CStr(ws.Cells(DATA_START_ROW + 4, DATA_START_COL + testNumber)) _
+    & "&amps1=" & CStr(ws.Cells(DATA_START_ROW + 5, DATA_START_COL + testNumber)) _
+    & "&amps2=" & CStr(ws.Cells(DATA_START_ROW + 6, DATA_START_COL + testNumber)) _
+    & "&amps3=" & CStr(ws.Cells(DATA_START_ROW + 7, DATA_START_COL + testNumber)) _
+    & "&volts1=" & CStr(ws.Cells(DATA_START_ROW + 8, DATA_START_COL + testNumber)) _
+    & "&volts2=" & CStr(ws.Cells(DATA_START_ROW + 9, DATA_START_COL + testNumber)) _
+    & "&volts3=" & CStr(ws.Cells(DATA_START_ROW + 10, DATA_START_COL + testNumber))
     
     formPumpTestData = dataString
     Exit Function

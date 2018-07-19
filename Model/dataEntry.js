@@ -35,7 +35,7 @@ function insertPumpTest (data, callback) {
 	,$14::numeric 																	\
 	,$15::int																		\
 	,$16::int																		\
-	,$17::int )"																
+	,$17::int )";																
 
 	var params = [data.pumpModel
 				,data.pumpStation

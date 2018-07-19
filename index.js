@@ -15,7 +15,7 @@ var dbtest = require('./Db/connectdb.js');
 /* Middleware */
 app.use(bodyParser.json());			// Body-Parser for getting data from requests
 app.use(bodyParser.urlencoded({     // Body-Parser for getting data from requests
-	extended: true
+	extended: false
 })); 
 
 /* Controller */
@@ -30,7 +30,7 @@ dataRetrievalModel = require('./Model/dataRetrieval.js');
 //// GET ////
 app.get('/', (req, res) => res.send('Mesa Water Utility')); // Home
 app.get('/dbTest', dbtest.testdb);							// Test
-app.get('/RetrievePumpData',dataRetrievalControl.handleTestRetrieval);
+app.get('/RetrievePumpData', dataRetrievalControl.handleTestRetrieval);
 
 //// POST ////
 app.post('/InsertPumpTest', dataEntryControl.handlePumpTest);		// Data Entry

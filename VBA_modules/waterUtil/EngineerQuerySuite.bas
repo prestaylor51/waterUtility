@@ -18,13 +18,20 @@ Sub retrievePumpData()
     'Get the data string
     Dim dataString As String
     
-    dataString = buildDataString()
+    dataString = buildDataString(ws)
+    
+    MsgBox dataString
+    
+    ' Add query params to GET req
+    serverURL = serverURL & dataString
+    
+    MsgBox serverURL
     
     'Create a new request and send it
     Dim httpReq As New WinHttpRequest
     httpReq.Open "GET", serverURL, False
                       'protocol, url, async
-    httpReq.Send dataString
+    httpReq.Send
     
     'Create var to hold response
     Dim strResp As String
@@ -39,13 +46,21 @@ End Sub
 ''''''''''''''''''''''''''''''''''''''''''''''''''
 ' BUILD DATA STRING
 ''''''''''''''''''''''''''''''''''''''''''''''''''
-Function buildDataString() As String
+Function buildDataString(ws As Worksheet) As String
     
     Dim dataString As String
     
+    ' Build String
+    dataString = "?pumpModel=" & ws.[pumpModel] _
+    & "&pumpStation=" & ws.[pumpStation] _
+    & "&pumpNumber=" & ws.[pumpNumber] _
+    & "&pumpSerial=" & ws.[pumpSerial] _
+    & "&startDate=" & ws.[queryStartDate] _
+    & "&endDate=" & ws.[queryEndDate]
     
-    
-
+    buildDataString = dataString
+    Exit Function
+        
 End Function
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''

@@ -22,10 +22,7 @@ function handlePumpTest (req, res) {
 
 			res.send(JSON.stringify(result.rows));
 		}
-		
-
 	});
-
 }
 
 module.exports = {

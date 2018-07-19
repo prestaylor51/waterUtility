@@ -20,16 +20,16 @@ function retrieveTestData(data, callback) {
                                                      WHERE ps.station_number = $2::varchar) = p.pump_station_id    \
                                                      AND p.pump_number = $3::int                                      \
                                             AND p.serial_number = $4::varchar                                   \
-                                            AND p.is_active = 'true')                                           \
-                AND test_date >= $5::date                                                                   \
-                AND test_date <= $6::date";
+                                            AND p.is_active = 'true')" ;                                          
+                // AND test_date >= $5::date                                                                   \
+                // AND test_date <= $6::date";
 
     var params = [data.pumpModel
                 ,data.pumpStation
                 ,data.pumpNumber
-                ,data.pumpSerial
-                ,data.startDate
-                ,data.endDate];
+                ,data.pumpSerial];
+                // ,data.startDate
+                // ,data.endDate];
 
     pool.query(sql, params, (err, result) => {
         
