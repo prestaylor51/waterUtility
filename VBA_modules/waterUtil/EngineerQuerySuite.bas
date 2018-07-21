@@ -1,5 +1,13 @@
 Attribute VB_Name = "EngineerQuerySuite"
 
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
+' CONSTANTS
+'   Constants to help make the utility make flaexable
+''''''''''''''''''''''''''''''''''''''''''''''''''''''
+Public Const DATA_START_COL = 2
+Public Const DATA_START_ROW = 21
+
+
 'An example of how to use the JSON from the database
 
 ' SERVER TEST
@@ -39,7 +47,7 @@ Sub retrievePumpData()
     
     Range("O23") = strResp
     
-    'Call jsonToExcel(strResp, 5, 1)
+    Call outputData(strResp)
         
 End Sub
 
@@ -66,12 +74,12 @@ End Function
 ''''''''''''''''''''''''''''''''''''''''''''''''''
 ' JSON TO EXCEL
 ''''''''''''''''''''''''''''''''''''''''''''''''''
-Sub jsonToExcel(jsonText As String, rowStart As Long, colStart As Long)
+Sub outputData(jsonText As String)
     ' To hold the whole response
     Dim jsonObj As Object
     
     ' To hold each row in
-    Dim row As Object, item As Variant
+    Dim row As Object
     
     ' An index
     Dim r As Long
@@ -80,33 +88,29 @@ Sub jsonToExcel(jsonText As String, rowStart As Long, colStart As Long)
     ' A worksheet
     Dim ws As Worksheet
     
-    Set ws = Worksheets("serverTest")
+    Set ws = Worksheets("PAUEngineerTemplate")
     
     Set jsonObj = JsonConverter.ParseJson(jsonText)
     
-    r = rowStart
-    c = colStart
-    
-    ws.Cells(r, 1) = "model"
-    ws.Cells(r, 2) = "motor hp"
-    ws.Cells(r, 3) = "stages"
-    ws.Cells(r, 4) = "voltage"
-    
-    r = r + 1
+    r = DATA_START_ROW
+    c = DATA_START_COL
     
     ' Iterate through rows
     For Each row In jsonObj
         
-        ws.Cells(r, c + 0) = row("stages")
-        ws.Cells(r, c + 1) = row("motor_hp")
-        ws.Cells(r, c + 2) = row("stages")
-        ws.Cells(r, c + 3) = row("voltage")
-                                        
-        'r = r + 1
+        ws.Cells(r, c) = row("test_date")
+        ws.Cells(r + 1, c) = row("speed_percent")
+        ws.Cells(r + 3, c) = row("pmp_flg_psi")
+        ws.Cells(r + 4, c) = row("header_psi")
+        ws.Cells(r + 5, c) = row("dis_flow_mgd")
+        ws.Cells(r + 6, c) = row("amps_1")
+        ws.Cells(r + 7, c) = row("amps_2")
+        ws.Cells(r + 8, c) = row("amps_3")
+        ws.Cells(r + 9, c) = row("volts_1")
+        ws.Cells(r + 10, c) = row("volts_2")
+        ws.Cells(r + 11, c) = row("volts_3")
         
-        'For Each item In row
-          '  ws.Cells(10, 5) = item.Value
-       ' Next
+        c = c + 1
         
     Next
     
