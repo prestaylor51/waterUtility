@@ -110,3 +110,25 @@ WHERE pump_id = (SELECT id FROM pump p
 									AND p.is_active = 'true')
 	AND test_date >= '2016-01-01'
 	AND test_date <= '2017-01-01';
+
+-- Get all test dates for a pump
+
+SELECT DISTINCT test_date FROM pump_test pt
+WHERE pump_id = (SELECT p.id FROM pump p													
+		WHERE (SELECT pm.id FROM pump_model pm										
+				WHERE pm.model_number = <model>) = p.pump_model_id					
+		AND (SELECT ps.id FROM pump_station ps										
+				WHERE ps.station_number = <station>) = p.pump_station_id				
+		AND p.pump_number = <pumpNo> 											
+		AND p.serial_number = <serial> 												
+		AND p.is_active = 't')
+
+SELECT DISTINCT test_date FROM pump_test pt
+WHERE pump_id = (SELECT p.id FROM pump p													
+		WHERE (SELECT pm.id FROM pump_model pm										
+				WHERE pm.model_number = '22BLK') = p.pump_model_id					
+		AND (SELECT ps.id FROM pump_station ps										
+				WHERE ps.station_number = 'SBFFPS') = p.pump_station_id				
+		AND p.pump_number = 1 											
+		AND p.serial_number = '78639-1-3' 												
+		AND p.is_active = 't');

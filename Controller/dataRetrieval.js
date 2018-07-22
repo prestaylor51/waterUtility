@@ -26,6 +26,23 @@ function handleTestRetrieval (req, res) {
     });
 }
 
+function handleTestDateRetrieval(req, res) {
+
+    var params = req.query;
+
+    dataRetrievalModel.retrieveTestDates(params, function(err, results){
+        if (err) {
+            console.log("ERROR retrieving test dates.");
+        }
+        else {
+            console.log("Retrieved test dates successfully.");
+            res.send
+        }
+    })
+
+}
+
 module.exports = {
-    handleTestRetrieval: handleTestRetrieval
+    handleTestRetrieval: handleTestRetrieval,
+    handleTestDateRetrieval : handleTestDateRetrieval
 }

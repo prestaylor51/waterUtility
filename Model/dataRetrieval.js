@@ -49,6 +49,11 @@ function retrieveTestData(data, callback) {
     
 }
 
+function retrieveTestDates(data, callback) {
+
+}
+
 module.exports = {
-    retrieveTestData : retrieveTestData
+    retrieveTestData : retrieveTestData,
+    retrieveTestDates : retrieveTestDates
 }
