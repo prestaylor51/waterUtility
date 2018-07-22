@@ -6,7 +6,7 @@ var dataRetrievalModel = require('../Model/dataRetrieval.js');
  * @param { } req
  * @param {*} res 
  */
-function handleTestRetrieval (req, res) {
+function handleTestRetrieval(req, res) {
     
     var params = req.query;
     console.log("req.body -> " + req.query);
@@ -19,8 +19,8 @@ function handleTestRetrieval (req, res) {
         }
         else {
             console.log("returned from the model successfully");
-            console.log("Result: " + JSON.stringify(result.rows))
-            res.send(JSON.stringify(result.rows))
+            console.log("Result: " + JSON.stringify(result.rows));
+            res.send(JSON.stringify(result.rows));
         }
 
     });
@@ -36,7 +36,8 @@ function handleTestDateRetrieval(req, res) {
         }
         else {
             console.log("Retrieved test dates successfully.");
-            res.send
+            console.log("Result: " + JSON.stringify(result.rows));
+            res.send(JSON.stringify(result.rows));
         }
     })
 

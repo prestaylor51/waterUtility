@@ -21,15 +21,13 @@ function retrieveTestData(data, callback) {
                                                      AND p.pump_number = $3::int                                      \
                                             AND p.serial_number = $4::varchar                                   \
                                             AND p.is_active = 'true')" ;                                          
-                // AND test_date >= $5::date                                                                   \
-                // AND test_date <= $6::date";
+                // AND test_date = $5::date                                                                   \
 
     var params = [data.pumpModel
                 ,data.pumpStation
                 ,data.pumpNumber
                 ,data.pumpSerial];
-                // ,data.startDate
-                // ,data.endDate];
+                // ,data.testDate
 
     pool.query(sql, params, (err, result) => {
         
@@ -50,7 +48,40 @@ function retrieveTestData(data, callback) {
 }
 
 function retrieveTestDates(data, callback) {
+    console.log("Entered retrieveTestDates");
+    // Connect to DB
+    var pool = db.remoteDbConnect();
 
+    var sql = "SELECT DISTINCT test_date FROM pump_test pt                      \
+    WHERE pump_id = (SELECT p.id FROM pump p                                    \
+            WHERE (SELECT pm.id FROM pump_model pm                              \
+                    WHERE pm.model_number = $1::varchar) = p.pump_model_id      \
+            AND (SELECT ps.id FROM pump_station ps                              \
+                    WHERE ps.station_number = $2::varchar) = p.pump_station_id  \
+            AND p.pump_number = $3::int                                         \
+            AND p.serial_number = $4::varchar                                   \
+            AND p.is_active = 't')";
+
+    params = [data.pumpModel,
+            data.pumpStation,
+            data.pumpSerial,
+            data.pumpNumber]
+
+    pool.query(sql, params, (err, result) => {
+
+        pool.end();
+
+        if (err) {
+            console.log("query failed: model.dataRetrieval.retrieveTestDates");
+            console.log("ERROR -> " + err);
+            callback(err, null);
+            return;
+        }
+        else {
+            callback(null, result);
+        }
+    });
+        
 }
 
 module.exports = {
