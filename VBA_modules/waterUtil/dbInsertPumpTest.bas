@@ -1,10 +1,12 @@
 Attribute VB_Name = "dbInsertPumpTest"
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' CONSTANTS
-'   Constants to help make the utility make flaexable
+'   Constants to help make the utility make flexable
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Public Const DATA_START_COL = 2
 Public Const DATA_START_ROW = 22
+Public Const SERVER_URL As String = "https://pump-assessment-utility.herokuapp.com/InsertPumpTest"
+Public Const LOCALHOST As String = "http://localhost:3000/InsertPumpTest"
 '
 
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -16,7 +18,6 @@ Sub insertPumpTest()
 
     ' Create Variables
     Dim ws As Worksheet: Set ws = Worksheets("PAUTestEntry")    'Set worksheet
-    Dim serverURL As String: serverURL = ws.[localhost]         'Set servel URL
     Dim dataString As String: dataString = ""                   'Initialize data string
     Dim failedTests As String                                   'Which inserts failed?
     
@@ -29,12 +30,12 @@ Sub insertPumpTest()
         
         ' Create a new request and send it
         Dim httpReq As New WinHttpRequest
-        httpReq.Open "POST", serverURL, False
+        httpReq.Open "POST", SERVER_URL, False
                           'protocol, url, async
         httpReq.SetRequestHeader "Content-type", "application/x-www-form-urlencoded"
         httpReq.Send dataString
         
-        MsgBox dataString
+        'MsgBox dataString
         
         ' Create var to hold response
         Dim strResp As String
@@ -52,7 +53,7 @@ Sub insertPumpTest()
     Next i
     
     ' For debugging
-    Range("O24") = serverURL
+    Range("O24") = SERVER_URL
     Range("O25") = strResp
     
     ' Print Failed Tests

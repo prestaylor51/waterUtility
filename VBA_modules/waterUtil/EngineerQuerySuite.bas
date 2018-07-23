@@ -2,11 +2,12 @@ Attribute VB_Name = "EngineerQuerySuite"
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' CONSTANTS
-'   Constants to help make the utility make flaexable
+'   Constants to help make the utility make flexable
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Public Const DATA_START_COL = 2
 Public Const DATA_START_ROW = 21
-
+Public Const SERVER_URL As String = "https://pump-assessment-utility.herokuapp.com/RetrievePumpData"
+Public Const LOCALHOST As String = "http://localhost:3000/RetrievePumpData"
 
 'An example of how to use the JSON from the database
 
@@ -19,10 +20,7 @@ Sub retrievePumpData()
           
     'Create a worsheet to put the response in
     Dim ws As Worksheet: Set ws = Worksheets("PAUEngineerTemplate")
-    
-    'Set the URL to
-    serverURL = ws.[localhost]
-    
+            
     'Get the data string
     Dim dataString As String
     
@@ -31,7 +29,7 @@ Sub retrievePumpData()
     MsgBox dataString
     
     ' Add query params to GET req
-    serverURL = serverURL & dataString
+    serverURL = SERVER_URL & dataString
     
     MsgBox serverURL
     
@@ -63,8 +61,7 @@ Function buildDataString(ws As Worksheet) As String
     & "&pumpStation=" & ws.[pumpStation] _
     & "&pumpNumber=" & ws.[pumpNumber] _
     & "&pumpSerial=" & ws.[pumpSerial] _
-    & "&startDate=" & ws.[queryStartDate] _
-    & "&endDate=" & ws.[queryEndDate]
+    & "&testDate=" & ws.[testDate]
     
     buildDataString = dataString
     Exit Function
