@@ -2,7 +2,11 @@
 INSERT INTO manufacturer 
 VALUES
 (nextval('manufacturer_id_seq')
-,'Floway');
+,'Floway'),
+(nextval('manufacturer_id_seq')
+,'Fairbanks Nijhuis'),
+(nextval('manufacturer_id_seq')
+,'National');
 
 -- SERVICE ZONE SEED
 INSERT INTO service_zone
@@ -54,6 +58,23 @@ VALUES
 ,null
 ,null
 ,null
+,null),
+(nextval('pump_model_id_seq')
+,3
+,'J11HC'
+,250
+,460
+,1785
+,0.877
+,0.95
+,820
+,10
+,3.5
+,19
+,100
+,12
+,null
+,null
 ,null);
 
 -- PUMP STATION SEED
@@ -76,7 +97,16 @@ VALUES
 ,120
 ,1473.00
 ,1444.50
-,2);
+,2),
+(nextval('pump_station_id_seq')
+,'DW18'
+,1
+,1.37
+,950
+,757
+,1456.00
+,1444.50
+,1);
 
 
 -- PUMP SEED
@@ -112,6 +142,14 @@ VALUES
 ,2
 ,'78639-1-4'
 ,'2018-1-1'
+,null
+,'true'),
+(nextval('pump_id_seq')
+,3
+,3
+,1
+,'123456'
+,'2017-1-1'
 ,null
 ,'true');
 

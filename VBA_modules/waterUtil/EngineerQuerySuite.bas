@@ -5,7 +5,7 @@ Attribute VB_Name = "EngineerQuerySuite"
 '   Constants to help make the utility make flexable
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''
 Public Const DATA_START_COL = 2
-Public Const DATA_START_ROW = 21
+Public Const DATA_START_ROW = 20
 Public Const SERVER_URL As String = "https://pump-assessment-utility.herokuapp.com/RetrievePumpData"
 Public Const LOCALHOST As String = "http://localhost:3000/RetrievePumpData"
 '
@@ -95,18 +95,19 @@ Sub outputData(jsonText As String)
     
     ' Iterate through rows
     For Each row In jsonObj
-        
-        ws.Cells(r, c) = row("test_date")
-        ws.Cells(r + 1, c) = row("speed_percent")
-        ws.Cells(r + 3, c) = row("pmp_flg_psi")
-        ws.Cells(r + 4, c) = row("header_psi")
-        ws.Cells(r + 5, c) = row("dis_flow_mgd")
-        ws.Cells(r + 6, c) = row("amps_1")
-        ws.Cells(r + 7, c) = row("amps_2")
-        ws.Cells(r + 8, c) = row("amps_3")
-        ws.Cells(r + 9, c) = row("volts_1")
-        ws.Cells(r + 10, c) = row("volts_2")
-        ws.Cells(r + 11, c) = row("volts_3")
+    
+        ws.Cells(r, c) = row("test_number")
+        ws.Cells(r + 1, c) = row("date")
+        ws.Cells(r + 2, c) = row("speed_percent")
+        ws.Cells(r + 4, c) = row("pmp_flg_psi")
+        ws.Cells(r + 5, c) = row("header_psi")
+        ws.Cells(r + 6, c) = row("dis_flow_mgd")
+        ws.Cells(r + 7, c) = row("amps_1")
+        ws.Cells(r + 8, c) = row("amps_2")
+        ws.Cells(r + 9, c) = row("amps_3")
+        ws.Cells(r + 10, c) = row("volts_1")
+        ws.Cells(r + 11, c) = row("volts_2")
+        ws.Cells(r + 12, c) = row("volts_3")
         
         c = c + 1
         

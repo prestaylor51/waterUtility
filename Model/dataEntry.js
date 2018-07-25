@@ -55,7 +55,7 @@ function insertPumpTest (data, callback) {
 				,data.volts2
 				,data.volts3]; 
 
-	console.log(params);
+	console.log("Params = " + params);
 
 	// Make INSERT				
 		pool.query(sql, params, (err, result) => {          

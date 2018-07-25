@@ -12,7 +12,7 @@ function retrieveTestData(data, callback) {
     var pool = db.remoteDbConnect();
 
     // Form SQL query
-    var sql = "SELECT * FROM pump_test                                                                          \
+    var sql = "SELECT *, to_char(test_date, 'YYYY-MM-DD') as date FROM pump_test                                                                          \
                 WHERE pump_id = (SELECT id FROM pump p                                                          \
                                     WHERE (SELECT id FROM pump_model pm                                         \
                                             WHERE pm.model_number = $1::varchar) = p.pump_model_id                  \

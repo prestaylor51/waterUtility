@@ -24,7 +24,7 @@ Sub insertPumpTest()
     Dim i As Integer
     
     ' Make INSERTs one by one
-    For i = 0 To 9
+    For i = 0 To 4
         
         dataString = formPumpTestData(ws, i)
         
@@ -51,11 +51,7 @@ Sub insertPumpTest()
         End If
     
     Next i
-    
-    ' For debugging
-    Range("O24") = SERVER_URL
-    Range("O25") = strResp
-    
+     
     ' Print Failed Tests
     Range("M27") = failedTests
         
@@ -87,6 +83,8 @@ Function formPumpTestData(ws As Worksheet, testNumber As Integer) As String
     & "&volts1=" & CStr(ws.Cells(DATA_START_ROW + 8, DATA_START_COL + testNumber)) _
     & "&volts2=" & CStr(ws.Cells(DATA_START_ROW + 9, DATA_START_COL + testNumber)) _
     & "&volts3=" & CStr(ws.Cells(DATA_START_ROW + 10, DATA_START_COL + testNumber))
+    
+    MsgBox dataString
     
     formPumpTestData = dataString
     Exit Function

@@ -1,4 +1,4 @@
--- Pump Assesment Utility 
+    -- Pump Assesment Utility 
 -- DROP all tables and data 
 DROP TABLE manufacturer, service_zone, organization, pump_model, pump_station, pump, suction, pump_test CASCADE;
 
@@ -80,13 +80,13 @@ CREATE TABLE pump_test
 ,test_number   		INT	
 ,test_date  		DATE				
 ,speed_percent		INT	
-,res_level_ft		NUMERIC(4, 2)
-,pmp_flg_psi		NUMERIC(4, 1)
-,header_psi			NUMERIC(3, 1)
-,dis_flow_mgd		NUMERIC(2, 1)
-,amps_1			NUMERIC(3, 1)
-,amps_2			NUMERIC(3, 1)
-,amps_3			NUMERIC(3, 1)
+,res_level_ft		NUMERIC(6, 2)
+,pmp_flg_psi		NUMERIC(6, 2)
+,header_psi			NUMERIC(6, 2)
+,dis_flow_mgd		NUMERIC(6, 2)
+,amps_1			NUMERIC(6, 2)
+,amps_2			NUMERIC(6, 2)
+,amps_3			NUMERIC(6, 2)
 ,volts_1			INT	
 ,volts_2			INT	
 ,volts_3			INT	
