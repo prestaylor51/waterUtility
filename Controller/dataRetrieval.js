@@ -30,7 +30,7 @@ function handleTestDateRetrieval(req, res) {
 
     var params = req.query;
 
-    dataRetrievalModel.retrieveTestDates(params, function(err, results){
+    dataRetrievalModel.retrieveTestDates(params, function(err, result){
         if (err) {
             console.log("ERROR retrieving test dates.");
         }

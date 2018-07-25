@@ -20,14 +20,14 @@ function retrieveTestData(data, callback) {
                                                      WHERE ps.station_number = $2::varchar) = p.pump_station_id    \
                                                      AND p.pump_number = $3::int                                      \
                                             AND p.serial_number = $4::varchar                                   \
-                                            AND p.is_active = 'true')" ;                                          
-                // AND test_date = $5::date                                                                   \
+                                            AND p.is_active = 'true')          \
+                AND test_date = $5::date ";
 
     var params = [data.pumpModel
                 ,data.pumpStation
                 ,data.pumpNumber
-                ,data.pumpSerial];
-                // ,data.testDate
+                ,data.pumpSerial
+                ,data.testDate];
 
     pool.query(sql, params, (err, result) => {
         
@@ -52,7 +52,7 @@ function retrieveTestDates(data, callback) {
     // Connect to DB
     var pool = db.remoteDbConnect();
 
-    var sql = "SELECT DISTINCT test_date FROM pump_test pt                      \
+    var sql = "SELECT DISTINCT to_char(test_date, 'YYYY-MM-DD') AS test_date FROM pump_test pt                      \
     WHERE pump_id = (SELECT p.id FROM pump p                                    \
             WHERE (SELECT pm.id FROM pump_model pm                              \
                     WHERE pm.model_number = $1::varchar) = p.pump_model_id      \
@@ -64,8 +64,8 @@ function retrieveTestDates(data, callback) {
 
     params = [data.pumpModel,
             data.pumpStation,
-            data.pumpSerial,
-            data.pumpNumber]
+            data.pumpNumber,
+            data.pumpSerial]
 
     pool.query(sql, params, (err, result) => {
 

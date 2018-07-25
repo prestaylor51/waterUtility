@@ -8,6 +8,7 @@ Public Const DATA_START_COL = 2
 Public Const DATA_START_ROW = 21
 Public Const SERVER_URL As String = "https://pump-assessment-utility.herokuapp.com/RetrievePumpData"
 Public Const LOCALHOST As String = "http://localhost:3000/RetrievePumpData"
+'
 
 'An example of how to use the JSON from the database
 
@@ -29,7 +30,7 @@ Sub retrievePumpData()
     MsgBox dataString
     
     ' Add query params to GET req
-    serverURL = SERVER_URL & dataString
+    serverURL = LOCALHOST & dataString
     
     MsgBox serverURL
     

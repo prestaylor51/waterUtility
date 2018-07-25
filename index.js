@@ -31,7 +31,7 @@ dataRetrievalModel = require('./Model/dataRetrieval.js');
 app.get('/', (req, res) => res.send('Mesa Water Utility')); // Home
 app.get('/dbTest', dbtest.testdb);							// Test
 app.get('/RetrievePumpData', dataRetrievalControl.handleTestRetrieval);
-app.get('/RetrieveTestDates',); // TODO
+app.get('/RetrieveTestDates', dataRetrievalControl.handleTestDateRetrieval); // TODO
 
 //// POST ////
 app.post('/InsertPumpTest', dataEntryControl.handlePumpTest);		// Data Entry
