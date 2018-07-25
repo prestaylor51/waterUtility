@@ -17,13 +17,11 @@ Sub loadTestDates()
     Dim ws As Worksheet: Set ws = Worksheets("PAUEngineerTemplate")
     Dim respString As String
 
-    MsgBox serverURL
-
     dataString = buildDataString(ws)
 
-    serverURL = LOCALHOST & dataString
+    serverURL = SERVER_URL & dataString
     
-    MsgBox serverURL
+    'MsgBox serverURL
     
     Dim httpReq As New WinHttpRequest
     httpReq.Open "GET", serverURL, False
@@ -32,7 +30,7 @@ Sub loadTestDates()
     
     respString = httpReq.ResponseText
     
-    MsgBox respString
+    'MsgBox respString
     
     Call populateListBox(respString, ws)
     

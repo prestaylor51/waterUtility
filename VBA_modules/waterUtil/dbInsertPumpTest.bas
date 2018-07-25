@@ -30,7 +30,7 @@ Sub insertPumpTest()
         
         ' Create a new request and send it
         Dim httpReq As New WinHttpRequest
-        httpReq.Open "POST", LOCALHOST, False
+        httpReq.Open "POST", SERVER_URL, False
                           'protocol, url, async
         httpReq.SetRequestHeader "Content-type", "application/x-www-form-urlencoded"
         httpReq.Send dataString

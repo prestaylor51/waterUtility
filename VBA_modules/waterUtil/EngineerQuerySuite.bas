@@ -27,12 +27,12 @@ Sub retrievePumpData()
     
     dataString = buildDataString(ws)
     
-    MsgBox dataString
+    'MsgBox dataString
     
     ' Add query params to GET req
-    serverURL = LOCALHOST & dataString
+    serverURL = SERVER_URL & dataString
     
-    MsgBox serverURL
+    'MsgBox serverURL
     
     'Create a new request and send it
     Dim httpReq As New WinHttpRequest
@@ -44,7 +44,7 @@ Sub retrievePumpData()
     Dim strResp As String
     strResp = httpReq.ResponseText
     
-    Range("O23") = strResp
+    'Range("O23") = strResp
     
     Call outputData(strResp)
         
